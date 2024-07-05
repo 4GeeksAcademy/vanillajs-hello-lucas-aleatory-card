@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
+    <title>Carta Española Aleatoria</title>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -11,19 +11,84 @@
       crossorigin="anonymous"
     />
     <link rel="shortcut icon" href="./4geeks.ico" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+      .card {
+        width: 150px;
+        height: 220px;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: white;
+        position: relative;
+        text-align: center;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .suit {
+        position: absolute;
+        font-size: 50px;
+        color: red;
+      }
+      .top-left {
+        top: 10px;
+        left: 10px;
+      }
+      .bottom-right {
+        bottom: 10px;
+        right: 10px;
+        transform: rotate(180deg);
+      }
+      .value {
+        size: 50px;
+      }
+    </style>
   </head>
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
-      </div>
+    <div class="card">
+      <div class="suit top-left"></div>
+      <div class="value"></div>
+      <div class="suit bottom-right"></div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const suits = ["\u2660", "\u2665", "\u2666", "\u2663"];
+        const values = [
+          "A",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "J",
+          "Q",
+          "K"
+        ];
+
+        const randomSuit = suits[Math.floor(Math.random() * suits.length)];
+        const randomValue = values[Math.floor(Math.random() * values.length)];
+
+        document.querySelector(".card .suit.top-left").textContent = randomSuit;
+        document.querySelector(".card .value").textContent = randomValue;
+        document.querySelector(
+          ".card .suit.bottom-right"
+        ).textContent = randomSuit;
+      });
+    </script>
   </body>
 </html>
